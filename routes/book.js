@@ -3,6 +3,7 @@ const BookModel = require("../models/book");
 const getBooks = require("../controller/getBooks");
 const addBook = require("../controller/addBook");
 const getBook = require("../controller/getBook");
+const updateBook = require("../controller/updateBook");
 
 const router = express.Router();
 router.get("/", async (req, res) => {
@@ -20,5 +21,8 @@ router.get("/books/:id", getBook);
 
 // add books route
 router.post("/books", addBook);
+
+// update book
+router.put("/books/:id", updateBook);
 
 module.exports = router;
