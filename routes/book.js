@@ -1,6 +1,7 @@
 const express = require("express");
 const BookModel = require("../models/book");
 const getBooks = require("../controller/getBooks");
+const addBook = require("../controller/addBook");
 
 const router = express.Router();
 router.get("/", async (req, res) => {
@@ -12,5 +13,8 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/books", getBooks);
+
+// add books route
+router.post("/books", addBook);
 
 module.exports = router;
