@@ -22,10 +22,3 @@ app.use("/api/v1", bookRoutes);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-// start server
-// connectDb.then(()=>{
-//     app.listen(PORT, () => {
-//         console.log(`Server is running on port ${PORT}`);
-//       });
-// })
