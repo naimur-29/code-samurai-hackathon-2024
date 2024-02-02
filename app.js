@@ -18,7 +18,7 @@ mongoose
 app.use(express.json());
 
 // Connect Routes
-app.use("/api/v1", bookRoutes);
+app.use("/api", bookRoutes);
 
 // Start server
 app.listen(PORT, () => {

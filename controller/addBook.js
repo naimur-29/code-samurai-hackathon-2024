@@ -2,14 +2,12 @@ const BookModel = require("../models/book");
 
 const addBook = async (req, res) => {
   try {
-    // console.log(req.body);
-    const requestData = req.body;
-    const data = new BookModel(requestData);
-    // console.log(data);
-    await data.save();
+    let booksCount = await BookModel.find();
+    booksCount = booksCount.length;
+    const data = {...req.body, id: booksCount + 1};
+    const newBook = await BookModel.create(data);
 
-    res.status(201).send(data);
-    // res.send({ message: "add book route " });
+    res.status(201).json(newBook);
   } catch (error) {
     res.send({ error });
     console.log(error);

@@ -2,9 +2,14 @@ const BookModel = require("../models/book");
 
 const getBooks = async (req, res) => {
   try {
-    res.send({ message: "get all books " });
+    let response = {
+      books: [],
+    }
+    response.books = await BookModel.find();
+    response.books.sort((a, b) => b.id - a.id);
+    res.status(200).json(response);
   } catch (error) {
-    res.send({ error });
+    res.status(404).json({error: error.message});
   }
 };
 
