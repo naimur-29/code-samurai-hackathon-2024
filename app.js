@@ -12,6 +12,9 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Error connecting to MongoDB:", err));
 
+// middleware
+app.use(express.json());
+
 // Connect Routes
 app.use("/api/v1", bookRoutes);
 
