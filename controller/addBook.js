@@ -8,7 +8,8 @@ const addBook = async (req, res) => {
     console.log(data);
     await data.save();
 
-    res.send({ message: "add book route " });
+    res.status(201).send(data);
+    // res.send({ message: "add book route " });
   } catch (error) {
     res.send({ error });
     console.log(error);
