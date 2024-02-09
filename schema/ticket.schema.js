@@ -1,26 +1,23 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
-const BookSchema = new mongoose.Schema({
-  id: {
+const TicketSchema = new Schema({
+  wallet_id: {
     type: Number,
     required: true,
   },
-  title: {
+  time_after: {
     type: String,
     required: true,
   },
-  author: {
-    type: String,
+  station_from: {
+    type: Number,
     required: true,
   },
-  genre: {
-    type: String,
-    required: true,
-  },
-  price: {
+  station_to: {
     type: Number,
     required: true,
   },
 });
 
-module.exports = BookSchema;
+module.exports = TicketSchema;

@@ -1,24 +1,33 @@
+require("dotenv").config();
 const express = require("express");
-const mongoose = require("mongoose");
+
 const connectDb = require("./Db");
-const bookRoutes = require("./routes/book");
+const userRouter = require("./routes/user.routes");
+const stationRouter = require("./routes/station.routes");
+const trainRouter = require("./routes/train.routes");
+const walletRouter = require("./routes/wallet.routes");
+const ticketRouter = require("./routes/ticket.routes");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 
-app.use(express.json());
+// WELCOME
+app.get("/api", (_req, res) =>
+  res.json({ message: "Welcome abroad Samurai Train Services!" })
+);
 
 // Connect to MongoDB
-mongoose
-  .connect("mongodb://localhost:27017/mydatabase")
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.error("Error connecting to MongoDB:", err));
+connectDb();
 
 // middleware
 app.use(express.json());
 
 // Connect Routes
-app.use("/api", bookRoutes);
+app.use("/api", userRouter);
+app.use("/api", stationRouter);
+app.use("/api", trainRouter);
+app.use("/api", walletRouter);
+app.use("/api", ticketRouter);
 
 // Start server
 app.listen(PORT, () => {
